@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.User">
+
+    <cache></cache>
+    <cache-ref namespace=""/>
+
+    <sql id="allColumn">id,username,age,create_time,update_time</sql>
+
+    <parameterMap id="" type="">
+        <parameter property=""></parameter>
+    </parameterMap>
+
+    <resultMap id="allFileMapping" type="User">
+        <constructor>
+            <idArg></idArg>
+            <arg></arg>
+        </constructor>
+        <id property="id" column="id" javaType="Long"/>
+        <result property="username" column="username" javaType="String"/>
+        <result property="age" column="age" javaType="Integer"/>
+        <result property="createTime" column="create_time" javaType="java.util.Date"/>
+        <result property="updateTime" column="update_time" javaType="java.util.Date"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="User" keyProperty="id" useGeneratedKeys="true">
+        <selectKey ></selectKey>
+ 	    insert into zs_test_user(id,username,age,create_time) values(null,#{username},#{age},#{createTime})
+    </insert>
+
+    <select id="select" resultMap="allFileMapping" >
+        select
+        <include refid="allColumn"/>
+        from zs_test_user
+    </select>
+</mapper>
